@@ -143,3 +143,23 @@ var drawSphere = function(r,n){
 	DRAW(m);
 	return m;
 }
+
+var drawPartOfSphere = function(r,n){
+	var d = DOMAIN([[PI/2,PI*(4/5)],[0,2*PI]])([n,2*n]);
+
+	var map = function (p){
+		var alfa = p[0]-(PI/2);
+		var beta = p[1];
+
+		var x = r*COS(alfa)*COS(beta);
+		var y = r*COS(alfa)*SIN(beta);
+		var z = r*SIN(alfa);
+
+		return [x,y,z];
+	}
+	var m = MAP(map)(d);
+
+
+	DRAW(m);
+	return m;
+}
