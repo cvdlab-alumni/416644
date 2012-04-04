@@ -83,5 +83,10 @@ var vetroPiscinaPiccola= SIMPLEX_GRID([[44.7,0.05],[-6.9,7.3],[-hbase,hmuri]]);
 
 var vetrate = STRUCT([vetroSotto,vetroSopra,vetroVertSx,vetroVertDx,vetroPiscinaPiccola]);
 
+
+var sopraPanca = SIMPLEX_GRID([[-7.9,15.3],[-14.1,0.7],[-hbase,]]);
+
+var panca = STRUCT([]);
+
 var pavillon = STRUCT([base,piscine,muri,colonne,vetrate]);
 DRAW(pavillon);
