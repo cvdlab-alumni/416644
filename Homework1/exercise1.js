@@ -87,6 +87,9 @@ var griglia = STRUCT([lineeOrizzontali(),lineeVerticali()]);
 var mkRect = function(x0,y0,w,h){
 	return POLYLINE([[x0,y0],[x0,y0+h],[x0+w,y0+h],[x0+w,y0],[x0,y0]]);
 }
+var mkRect2 = function(x0,y0,x1,y1){
+	return POLYLINE([[x0,y0],[x0,y1],[x1,y1],[x1,y0],[x0,y0]]);
+}
 
 var mkMuretti = function(){
 	var muri = [];
@@ -104,7 +107,9 @@ var mkMuretti = function(){
 	
 
 	muri.push(mkRect(7.5,15,19,0.2)); //muro sopra la piscina
+	muri.push(mkRect2(7.85,14.1,23.15,14.8)); //panchine sopra la piscina
 	
+
 
 	return STRUCT(muri);
 }
