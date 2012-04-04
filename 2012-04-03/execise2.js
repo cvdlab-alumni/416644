@@ -3,6 +3,7 @@
 //var pezzettinosx = SIMPLEX_GRID([[],[],[hbase]]);
 
 var hbase = 2;
+var hmuri = 3;
 
 var pezzettinoSx = SIMPLEX_GRID([[1],[2],[hbase]]);
 var bloccoPiscina = SIMPLEX_GRID([[-1,20],[1,-9,7],[hbase]]);
@@ -20,11 +21,17 @@ var arrScalette = [];
 		arrScalette.push(scalino);
 	}
 var scalette = STRUCT(arrScalette);
+var piscinaPiccola = SIMPLEX_GRID([[-47,4],[-5,11],[hbase-0.25]]);
+
 
 var base = STRUCT([pezzettinoSx,bloccoPiscina,ufficio,piscina,
 					bloccoCentrale,baseSezioneScalette,scalette,baseCasa,
-					pezzettinoDx1,pezzettinoDx2]);
+					pezzettinoDx1,pezzettinoDx2,piscinaPiccola]);
 
 
+var muroSx = SIMPLEX_GRID([[-0.8,0.2],[-0.8,21.4],[hbase+hmuri]]);
 
-DRAW(base);
+var muri = STRUCT([muroSx]);
+
+var pavillon = STRUCT([base,muri]);
+DRAW(pavillon);
