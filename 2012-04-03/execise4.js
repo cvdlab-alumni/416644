@@ -108,9 +108,13 @@ var mkSedia = function(){
 }
 
 var sedia = mkSedia();
-sedia = T([0,1,2])([3,13,hbase])(sedia);
+var sedia1 = T([0,1,2])([3,13,hbase])(sedia);
 
-var arredamento = STRUCT([sedia]);
+var sedia2 = R(2)(PI/2)(sedia);
+sedia2 = T([0,1,2])([46,10,hbase])(sedia2);
+
+
+var arredamento = STRUCT([sedia1,sedia2]);
 COLOR(coloreArredamento)(arredamento);
 
 var base = STRUCT([pezzettinoSx,bloccoPiscina,ufficio,fondoPiscina,
