@@ -146,10 +146,19 @@ var mkPanchine = function(){
 
 	return STRUCT(panchine);
 }
+var mkScalette = function(){
+	var scalette = [];
 
+	for(var i=0; i<8; i++){
+		scalette.push(mkRect(36+(i/8),1,3/8,3));
+	}
+
+	return STRUCT(scalette);
+}
 var muri = COLOR([0,0,0])(mkMuretti());
 var vetri= COLOR([0,0,0])(mkVetrate());
 var panchine = COLOR([0,0,0])(mkPanchine());
+var scalette = COLOR([0,0,0])(mkScalette());
 
 var pianta2D = STRUCT([griglia,muri,vetri,scalette]);
 DRAW(pianta2D);
