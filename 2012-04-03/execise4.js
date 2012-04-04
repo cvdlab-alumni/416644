@@ -11,6 +11,15 @@ var htetti = 0.5;
 var i;
 var array;
 
+var coloreBase = [255/255, 248/255, 220/255];
+var coloreMuri = [255/255, 250/255, 205/255]; //255 228 181
+var coloreColonne = [255/255, 250/255, 205/255];
+var colorePanca = [245/255, 222/255, 179/255]; //[255 250 250];
+var coloreAcqua = [135/255, 206/255, 250/255]; //175 238 238
+var coloreVetro = [0/255, 255/255, 255/255];
+var coloreTetti = [188/255, 143/255, 143/255];
+var coloreArredamento = [210/255, 105/255, 30/255];
+
 var pezzettinoSx = SIMPLEX_GRID([[1],[2],[hbase]]);
 var bloccoPiscina = SIMPLEX_GRID([[-1,20],[1,-9,7],[hbase]]);
 var ufficio = SIMPLEX_GRID([[-1,8],[-17,5.2],[hbase]]);
@@ -31,12 +40,6 @@ var scalette = STRUCT(arrScalette);
 var piscinaPiccola = SIMPLEX_GRID([[-47,4],[-5,11],[-0.5,hbase-0.75]]);
 var fondoPiscinaPiccola = SIMPLEX_GRID([[-47,4],[-5,11],[0.5]]);
 
-
-var base = STRUCT([pezzettinoSx,bloccoPiscina,ufficio,fondoPiscina,
-					bloccoCentrale,baseSezioneScalette,scalette,baseCasa,
-					pezzettinoDx1,pezzettinoDx2,fondoPiscinaPiccola]);
-
-var piscine = STRUCT([piscina,piscinaPiccola]);
 
 var muroSotto = SIMPLEX_GRID([[-1,7],[-0.8,0.2],[hbase+hmuri]]);
 var muroSinistra = SIMPLEX_GRID([[-0.8,0.2],[-0.8,21.6],[hbase+hmuri]]);
@@ -59,11 +62,6 @@ var muroSottoBagno2 = SIMPLEX_GRID([[-6.6,2.4],[-20.7,0.1],[-hbase,hmuri]]);
 var muroDentroBagno1 = SIMPLEX_GRID([[-6.95,0.1],[-20.8,0.35],[-hbase,hmuri]]);
 var muroDentroBagno2 = SIMPLEX_GRID([[-6.95,0.1],[-21.85,0.35],[-hbase,hmuri]]);
 
-var muri = STRUCT([muroSotto,muroSinistra,muroDestraUfficio,muroSopraUfficio,muroSopraPiscina,muroSottoVetrate,
-					muroSopraCasa,muroDestraVetrate,muroSottoCasa,muroDestraCasa,
-					muroSottoUfficio1,muroSottoUfficio2,muroDentroUfficio1,muroDentroUfficio2,
-					muroSottoBagno1,muroSottoBagno2,muroDentroBagno1,muroDentroBagno2]);
-
 var mkColonna = function(x,y,l){
 	var rett1 = SIMPLEX_GRID([[-(x-(l/6)),l/3],[-(y-(l/2)),l],[-hbase,hmuri]]);
 	var rett2 = SIMPLEX_GRID([[-(x-(l/2)),l/3],[-(y-(l/6)),l/3],[-hbase,hmuri]]);
@@ -77,16 +75,12 @@ for(i in array){
 	arrColonne.push(mkColonna(array[i],14,dimColonne));
 }
 
-var colonne = STRUCT(arrColonne);
-
 var vetroSotto= SIMPLEX_GRID([[-30,11.5],[-4.95,0.05],[-hbase,hmuri]]);
 var vetroSopra= SIMPLEX_GRID([[-30,10],[-13.75,0.05],[-hbase,hmuri]]);
 var vetroVertSx= SIMPLEX_GRID([[-30.95,0.05],[-7.5,6.25],[-hbase,hmuri]]);
 var vetroVertDx= SIMPLEX_GRID([[-31.95,0.05],[-7.5,6.25],[-hbase,hmuri]]);
 var vetroPiscinaPiccola= SIMPLEX_GRID([[-44.7,0.05],[-6.9,7.3],[-hbase,hmuri]]);
 
-
-var vetrate = STRUCT([vetroSotto,vetroSopra,vetroVertSx,vetroVertDx,vetroPiscinaPiccola]);
 
 
 var sopraPanca = SIMPLEX_GRID([[-7.9,15.3],[-14.1,0.7],[-hbase,-hbpanca,hpanca]]);
@@ -102,13 +96,49 @@ for (i=8; i<23; i=i+2.1){
 	arrSottoPanca.push(mkCuboPanca(i,ycubipanca,0.5));
 }
 
-var panca = STRUCT([sopraPanca,STRUCT(arrSottoPanca)]);
-
 var tettoUfficio = SIMPLEX_GRID([[-0.5,9],[-13.2,9.3],[-hbase,-hmuri,htetti]]);
 var tettoCasa = SIMPLEX_GRID([[-24,23],[-4,13],[-hbase,-hmuri,htetti]]);
 
+var mkSedia = function(){
+  var gSedia = SIMPLEX_GRID([[0.2,-0.6,0.2],[0.2,-0.6,0.2],[0.5]]);
+  var corpoSedia = SIMPLEX_GRID([[1],[1],[-0.5,0.2]]);
+  var schienaleSedia = SIMPLEX_GRID([[1],[-0.8,0.2],[-0.7,0.3]]);
+
+  return STRUCT([gSedia,corpoSedia,schienaleSedia]);
+}
+
+var sedia = mkSedia();
+sedia = T([0,1,2])([3,13,hbase])(sedia);
+
+var arredamento = STRUCT([sedia]);
+COLOR(coloreArredamento)(arredamento);
+
+var base = STRUCT([pezzettinoSx,bloccoPiscina,ufficio,fondoPiscina,
+					bloccoCentrale,baseSezioneScalette,scalette,baseCasa,
+					pezzettinoDx1,pezzettinoDx2,fondoPiscinaPiccola]);
+COLOR(coloreBase)(base);
+
+var piscine = STRUCT([piscina,piscinaPiccola]);
+COLOR(coloreAcqua)(piscine);
+
+var muri = STRUCT([muroSotto,muroSinistra,muroDestraUfficio,muroSopraUfficio,muroSopraPiscina,muroSottoVetrate,
+					muroSopraCasa,muroDestraVetrate,muroSottoCasa,muroDestraCasa,
+					muroSottoUfficio1,muroSottoUfficio2,muroDentroUfficio1,muroDentroUfficio2,
+					muroSottoBagno1,muroSottoBagno2,muroDentroBagno1,muroDentroBagno2]);
+COLOR(coloreMuri)(muri);
+
+var colonne = STRUCT(arrColonne);
+COLOR(coloreColonne)(colonne);
+
+var vetrate = STRUCT([vetroSotto,vetroSopra,vetroVertSx,vetroVertDx,vetroPiscinaPiccola]);
+COLOR(coloreVetro)(vetrate);
+
+var panca = STRUCT([sopraPanca,STRUCT(arrSottoPanca)]);
+COLOR(colorePanca)(panca);
+
 var tetti = STRUCT([tettoUfficio,tettoCasa]);
+COLOR(coloreTetti)(tetti);
 
+var pavillon = STRUCT([base,piscine,muri,colonne,vetrate,panca,tetti,arredamento]);
 
-var pavillon = STRUCT([base,piscine,muri,colonne,vetrate,panca,tetti]);
 DRAW(pavillon);
