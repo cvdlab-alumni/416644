@@ -1,5 +1,4 @@
 
-
 disegnare forme solide:
 
 var a = CUBOID([1,2,3]);
@@ -133,7 +132,7 @@ var drawSphere = function(r,n){
 
 		var x = r*COS(alfa)*COS(beta);
 		var y = r*COS(alfa)*SIN(beta);
-		var z = r*SIN(alfa);
+		var z = -1*r*SIN(alfa); // il -1 per rivolgere la faccia illuminata all'esterno
 
 		return [x,y,z];
 	}
@@ -143,6 +142,10 @@ var drawSphere = function(r,n){
 	DRAW(m);
 	return m;
 }
+
+// problema dei colori:
+COLOR([255,0,0])(a); // diventa rosso brillante
+COLOR([1,0,0])(a); // diventa rosso con illuminazione corretta
 
 var drawPartOfSphere = function(r,n){
 	var d = DOMAIN([[PI/2,PI*(4/5)],[0,2*PI]])([n,2*n]);
