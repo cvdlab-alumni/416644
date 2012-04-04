@@ -126,8 +126,8 @@ var mkMuretti = function(){
 var mkVetrate = function(){
 	var vetrate = [];
 
-	//vetrate.push(POLYLINE([[38.8,5],[38.8,11.5]])); //linea 1
-	//vetrate.push(POLYLINE([[42.5,5],[42.5,11.5]])); //linea 2
+	vetrate.push(POLYLINE([[38.8,5],[38.8,11.5]])); //linea 1
+	vetrate.push(POLYLINE([[42.5,5],[42.5,11.5]])); //linea 2
 	vetrate.push(POLYLINE([[31,7.45],[31,13.75]])); //linea 3
 	vetrate.push(POLYLINE([[32,7.45],[32,13.75]])); //linea 4
 
@@ -150,7 +150,7 @@ var mkScalette = function(){
 	var scalette = [];
 
 	for(var i=0; i<8; i++){
-		scalette.push(mkRect(36+(i/8),1,3/8,3));
+		scalette.push(mkRect((36+((3*i)/8)),1,(3/8),3));
 	}
 
 	return STRUCT(scalette);
@@ -160,7 +160,7 @@ var vetri= COLOR([0,0,0])(mkVetrate());
 var panchine = COLOR([0,0,0])(mkPanchine());
 var scalette = COLOR([0,0,0])(mkScalette());
 
-var pianta2D = STRUCT([griglia,muri,vetri,scalette]);
+var pianta2D = STRUCT([griglia,muri,vetri,scalette,panchine]);
 DRAW(pianta2D);
 
 
