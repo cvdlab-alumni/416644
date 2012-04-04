@@ -107,14 +107,52 @@ var mkMuretti = function(){
 	
 
 	muri.push(mkRect(7.5,15,19,0.2)); //muro sopra la piscina
-	muri.push(mkRect2(7.85,14.1,23.15,14.8)); //panchine sopra la piscina
 	
+	muri.push(mkRect2(25.2,7.25,33.8,7.45)); //muro a destra della piscina sotto le vetrate
+	muri.push(mkRect(30,13.75,10,0.1)); //muro sopra le vetrate
+	muri.push(mkRect(37.2,11.5,5.3,0.2)); //muro a destra delle vetrate
 	
+
+	muri.push(mkRect2(37.7,16,51.2,16.2)); //muro alto destra
+	muri.push(mkRect2(51,5,51.2,16.2)); //muro destra
+	muri.push(mkRect2(41.5,4.8,51.2,5)); //muro sotto destra
+
+	muri.push(mkRect2(40,13.75,40.1,16)); //porta sopra
+	muri.push(mkRect(30,5,0.1,2.25)); //porta sotto destra
 
 
 	return STRUCT(muri);
 }
-var muretti = mkMuretti();
+var mkVetrate = function(){
+	var vetrate = [];
 
-var pianta2D = STRUCT([griglia,muretti]);
+	//vetrate.push(POLYLINE([[38.8,5],[38.8,11.5]])); //linea 1
+	//vetrate.push(POLYLINE([[42.5,5],[42.5,11.5]])); //linea 2
+	vetrate.push(POLYLINE([[31,7.45],[31,13.75]])); //linea 3
+	vetrate.push(POLYLINE([[32,7.45],[32,13.75]])); //linea 4
+
+	vetrate.push(mkRect2(44.7,6.9,44.75,14.2)); //vetrata sinistra piscina piccola
+	vetrate.push(mkRect2(30,4.95,41.5,5)); //vetrata muro sotto destra
+
+	return STRUCT(vetrate);
+}
+var mkPanchine = function(){
+	var panchine = [];
+
+	panchine.push(mkRect2(7.85,14.1,23.15,14.8)); //panchine sopra la piscina
+	panchine.push(mkRect2(32.25,9,33,12)); //panchina dentro grossa
+	panchine.push(mkRect2(39.6,10.5,40.5,11.4)); //panchina dentro piccola
+
+
+	return STRUCT(panchine);
+}
+
+var muri = COLOR([0,0,0])(mkMuretti());
+var vetri= COLOR([0,0,0])(mkVetrate());
+var panchine = COLOR([0,0,0])(mkPanchine());
+
+var pianta2D = STRUCT([griglia,muri,vetri,scalette]);
 DRAW(pianta2D);
+
+
+
