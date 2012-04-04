@@ -4,6 +4,7 @@
 
 var hbase = 2;
 var hmuri = 3;
+var dimColonne = 0.5;
 
 var pezzettinoSx = SIMPLEX_GRID([[1],[2],[hbase]]);
 var bloccoPiscina = SIMPLEX_GRID([[-1,20],[1,-9,7],[hbase]]);
@@ -36,33 +37,51 @@ var muroSotto = SIMPLEX_GRID([[-1,7],[0.8,0.2],[hbase+hmuri]]);
 var muroSinistra = SIMPLEX_GRID([[-0.8,0.2],[-0.8,21.6],[hbase+hmuri]]);
 var muroSopraUfficio = SIMPLEX_GRID([[-1,8],[-22.2,0.2],[hbase+hmuri]]);
 var muroDestraUfficio = SIMPLEX_GRID([[-9,0.2],[-16.8,5.6],[hbase+hmuri]]);
-var muroSopraPiscina = SIMPLEX_GRID([[-7.5,19],[-15,0.2],[hbase+hmuri]]);
-var muroSottoVetrate = SIMPLEX_GRID([[-25.2,8.6],[-7.3,0.2],[hbase+hmuri]]);
+var muroSopraPiscina = SIMPLEX_GRID([[-7.5,19],[-15,0.2],[-hbase,hmuri]]);
+var muroSottoVetrate = SIMPLEX_GRID([[-25.2,8.6],[-7.3,0.2],[-hbase,hmuri]]);
 
 var muroDestraVetrate = SIMPLEX_GRID([[-37.1,5.4],[-11.4,0.2],[hbase+hmuri]]);
 var muroSopraCasa = SIMPLEX_GRID([[-37.8,13.4],[-16,0.2],[hbase+hmuri]]);
 var muroSottoCasa = SIMPLEX_GRID([[-41.5,9.7],[-4.8,0.2],[hbase+hmuri]]);
 var muroDestraCasa = SIMPLEX_GRID([[-51,0.2],[-5,11],[hbase+hmuri]]);
 
-var muroSottoUfficio1 = SIMPLEX_GRID([[-1,6.15],[-16.95,0.1],[hbase+hmuri]]);
-var muroSottoUfficio2 = SIMPLEX_GRID([[-7.85,1.15],[-16.95,0.1],[hbase+hmuri]]);
-var muroDentroUfficio1 = SIMPLEX_GRID([[-4.95,0.1],[-17.05,2.1],[hbase+hmuri]]);
-var muroDentroUfficio2 = SIMPLEX_GRID([[-4.95,0.1],[-19.85,2.35],[hbase+hmuri]]);
-var muroSottoBagno1 = SIMPLEX_GRID([[-5.05,0.85],[-20.7,0.1],[hbase+hmuri]]);
-var muroSottoBagno2 = SIMPLEX_GRID([[-6.6,2.4],[-20.7,0.1],[hbase+hmuri]]);
-var muroDentroBagno1 = SIMPLEX_GRID([[-6.95,0.1],[-20.8,0.35],[hbase+hmuri]]);
-var muroDentroBagno2 = SIMPLEX_GRID([[-6.95,0.1],[-21.85,0.35],[hbase+hmuri]]);
-
-
-
+var muroSottoUfficio1 = SIMPLEX_GRID([[-1,6.15],[-16.95,0.1],[-hbase,hmuri]]);
+var muroSottoUfficio2 = SIMPLEX_GRID([[-7.85,1.15],[-16.95,0.1],[-hbase,hmuri]]);
+var muroDentroUfficio1 = SIMPLEX_GRID([[-4.95,0.1],[-17.05,2.1],[-hbase,hmuri]]);
+var muroDentroUfficio2 = SIMPLEX_GRID([[-4.95,0.1],[-19.85,2.35],[-hbase,hmuri]]);
+var muroSottoBagno1 = SIMPLEX_GRID([[-5.05,0.85],[-20.7,0.1],[-hbase,hmuri]]);
+var muroSottoBagno2 = SIMPLEX_GRID([[-6.6,2.4],[-20.7,0.1],[-hbase,hmuri]]);
+var muroDentroBagno1 = SIMPLEX_GRID([[-6.95,0.1],[-20.8,0.35],[-hbase,hmuri]]);
+var muroDentroBagno2 = SIMPLEX_GRID([[-6.95,0.1],[-21.85,0.35],[-hbase,hmuri]]);
 
 var muri = STRUCT([muroSotto,muroSinistra,muroDestraUfficio,muroSopraUfficio,muroSopraPiscina,muroSottoVetrate,
 					muroSopraCasa,muroDestraVetrate,muroSottoCasa,muroDestraCasa,
 					muroSottoUfficio1,muroSottoUfficio2,muroDentroUfficio1,muroDentroUfficio2,
 					muroSottoBagno1,muroSottoBagno2,muroDentroBagno1,muroDentroBagno2]);
 
+var mkColonna = function(x,y,l){
+	var rett1 = SIMPLEX_GRID([[-(x-(l/6)),l/3],[-(y-(l/2)),l],[-hbase,hmuri]]);
+	var rett2 = SIMPLEX_GRID([[-(x-(l/2)),l/3],[-(y-(l/6)),l/3],[-hbase,hmuri]]);
+	var rett3 = SIMPLEX_GRID([[-(x+(l/6)),l/3],[-(y-(l/6)),l/3],[-hbase,hmuri]]);
+	return STRUCT([rett1,rett2,rett3]);
+}
+var arrColonne = [];
+var array = [26,32,39,45];
+for(var i in array){
+	arrColonne.push(mkColonna(array[i],7,dimColonne));
+	arrColonne.push(mkColonna(array[i],14,dimColonne));
+}
+
+var colonne = STRUCT(arrColonne);
+
+var vetroSotto= SIMPLEX_GRID([[-30,11.5],[-4.95,0.05],[-hbase,hmuri]]);
+var vetroSopra= SIMPLEX_GRID([[-30,10],[-13.75,0.05],[-hbase,hmuri]]);
+var vetroVertSx= SIMPLEX_GRID([[-30.95,0.05],[-7.5,6.25],[-hbase,hmuri]]);
+var vetroVertDx= SIMPLEX_GRID([[-31.95,0.05],[-7.5,6.25],[-hbase,hmuri]]);
+var vetroPiscinaPiccola= SIMPLEX_GRID([[44.7,0.05],[-6.9,7.3],[-hbase,hmuri]]);
 
 
+var vetrate = STRUCT([vetroSotto,vetroSopra,vetroVertSx,vetroVertDx,vetroPiscinaPiccola]);
 
-var pavillon = STRUCT([base,piscine,muri]);
+var pavillon = STRUCT([base,piscine,muri,colonne,vetrate]);
 DRAW(pavillon);
