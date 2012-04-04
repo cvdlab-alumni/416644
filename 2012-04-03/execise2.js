@@ -5,6 +5,11 @@
 var hbase = 2;
 var hmuri = 3;
 var dimColonne = 0.5;
+var hbpanca = 0.5;
+var hpanca = 0.5;
+var htetti = 0.5;
+var i;
+var array;
 
 var pezzettinoSx = SIMPLEX_GRID([[1],[2],[hbase]]);
 var bloccoPiscina = SIMPLEX_GRID([[-1,20],[1,-9,7],[hbase]]);
@@ -66,8 +71,8 @@ var mkColonna = function(x,y,l){
 	return STRUCT([rett1,rett2,rett3]);
 }
 var arrColonne = [];
-var array = [26,32,39,45];
-for(var i in array){
+array = [26,32,39,45];
+for(i in array){
 	arrColonne.push(mkColonna(array[i],7,dimColonne));
 	arrColonne.push(mkColonna(array[i],14,dimColonne));
 }
@@ -84,9 +89,26 @@ var vetroPiscinaPiccola= SIMPLEX_GRID([[44.7,0.05],[-6.9,7.3],[-hbase,hmuri]]);
 var vetrate = STRUCT([vetroSotto,vetroSopra,vetroVertSx,vetroVertDx,vetroPiscinaPiccola]);
 
 
-var sopraPanca = SIMPLEX_GRID([[-7.9,15.3],[-14.1,0.7],[-hbase,]]);
+var sopraPanca = SIMPLEX_GRID([[-7.9,15.3],[-14.1,0.7],[-hbase,-hbpanca,hpanca]]);
+var arrSottoPanca = []
+array = [8,10,12,14,16,18,20,22];
+var ycubipanca = 14.1+0.35;
 
-var panca = STRUCT([]);
+var mkCuboPanca = function(x,y,l){
+	return SIMPLEX_GRID([[-(x),l],[-(y-l/2),l],[-hbase,hbpanca]]);
+}
 
-var pavillon = STRUCT([base,piscine,muri,colonne,vetrate]);
+for (i=8; i<23; i=i+2.1){
+	arrSottoPanca.push(mkCuboPanca(i,ycubipanca,0.5));
+}
+
+var panca = STRUCT([sopraPanca,STRUCT(arrSottoPanca)]);
+
+var tettoUfficio = SIMPLEX_GRID([[-0.5,9],[-13.2,9.3],[-hbase,-hmuri,htetti]]);
+var tettoCasa = SIMPLEX_GRID([[-24,23],[-4,13],[-hbase,-hmuri,htetti]]);
+
+var tetti = STRUCT([tettoUfficio,tettoCasa]);
+
+
+var pavillon = STRUCT([base,piscine,muri,colonne,vetrate,panca,tetti]);
 DRAW(pavillon);
