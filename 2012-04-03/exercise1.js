@@ -109,6 +109,7 @@ var mkMuretti = function(){
 	muri.push(mkRect(7.5,15,19,0.2)); //muro sopra la piscina
 	muri.push(mkRect2(7.85,14.1,23.15,14.8)); //panchine sopra la piscina
 	
+	
 
 
 	return STRUCT(muri);
