@@ -82,7 +82,16 @@ var lineeOrizzontali = function(){
 	}
 	return STRUCT(lines);
 }
-
 var griglia = STRUCT([lineeOrizzontali(),lineeVerticali()]);
 
-DRAW(griglia);
+var mkRect = function(x0,y0,x1,y1){
+	return	POLYLINE([[x0,y0],[x0,y1],[x1,y1],[x1,y0],[x0,y0]]);
+}
+
+var mkMuretti = function(){
+	return mkRect(3,3,9,8);
+}
+var muretti = mkMuretti();
+
+var pianta2D = STRUCT([griglia,muretti]);
+DRAW(pianta2D);
