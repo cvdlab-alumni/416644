@@ -104,12 +104,21 @@ puntatelaioaio.push(finepunta);
 var puntatelaio = getSuperficie(puntatelaioaio,25,15);
 
 
-// punta motore 
-var naso = mkSphere(0.5,15);
+// punta e motore 
+var naso = mkSphere(0.5,20);
 
-naso.scale([0,1,2],[0.4,2,0.4]);
-naso.translate([0,1,2],[0,0.5,-0.6]);
+naso.scale([0,1,2],[0.7,2,0.7]);
+naso.translate([0,1,2],[0,0.5,-0.7]);
 
+var elica1 = mkSphere(0.5,15);
+
+elica1.scale([0,1,2],[0.1,1.7,0.25]);
+elica1.rotate([0,1],PI/2);
+elica1.translate([0,1,2],[-0.9,-0.4,-0.7]);
+
+var elica2 = S([0])([-1])(elica1);
+
+var elica = STRUCT([elica1,elica2]);
 // copriamo le vegogne
 
 var fakepoint = [punta[0],punta[0]];
@@ -117,7 +126,7 @@ var fakepoint = [punta[0],punta[0]];
 var vergogne =  getSuperficie([traslaPunti(scalaPunti(punta,1.1,1.1,1.1),0,0,0.05),fakepoint]);
 
 
-puntatelaio = STRUCT([puntatelaio,vergogne,naso]);
+puntatelaio = STRUCT([puntatelaio,vergogne,naso,elica]);
 
 // CORPO -----------------------------------
 
