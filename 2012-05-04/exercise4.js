@@ -1,5 +1,6 @@
 
-var MAKEALA = function() {
+//###############################################################################################################################################
+var MAKEALA = function() { 
 
 var getBezierS0 = function (controls,n,draw){
 	
@@ -173,7 +174,7 @@ alaDef = STRUCT([alaDef, S([0])([-1])(alaDef)]);
 return alaDef;
 }
 
-
+//###############################################################################################################################################
 var MAKETELAIO = function (){
 
 var getBezierS0 = function (controls){
@@ -312,7 +313,7 @@ var contornoSmussato = scalaPunti(circleConMolteplicita([1,3,3,0,3,3,1]),0.65,0.
 
 
 var quadrato = scalaPunti(circleConMolteplicita([1,9,9,1,9,9,1]),0.5,0.5,0.5);
-var coda = scalaPunti(circleConMolteplicita([1,19,19,1,19,19,1]),0.00,0.5,0.2);
+var coda = scalaPunti(circleConMolteplicita([1,19,19,1,19,19,1]),0.00,0.5,0.05);
 
 corpotelaioaio.push(finepunta);
 /*
@@ -349,7 +350,7 @@ var telaio = STRUCT([puntatelaio,corpo,naso,elica]);
 return telaio;
 }
 
-
+//###############################################################################################################################################
 var MAKETIMONE = function(){
 
 var getBezierS0 = function (controls){
@@ -506,12 +507,12 @@ return timone;
 }
 
 
-DRAW(MAKETIMONE());
+var timone = MAKETIMONE();
+var telaio = MAKETELAIO();
+var ala = MAKEALA();
 
+timone.translate([1],[9]);
 
+var avro504k = STRUCT([ala,telaio,timone]);
 
-DRAW(MAKETELAIO());
-DRAW(MAKEALA());
-
-//DRAW(alaDef,centroAlaA);
-
+DRAW(avro504k);
