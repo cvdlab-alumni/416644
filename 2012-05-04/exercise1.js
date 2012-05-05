@@ -1,5 +1,5 @@
 
-
+var MAKEALA = function() {
 
 var getBezierS0 = function (controls,n,draw){
 	
@@ -169,6 +169,10 @@ cAla2.translate([0,1,2],[0,0,2]);
 
 var alaDef = STRUCT([alaDef,cAla2,cAla1]);
 
-DRAW(alaDef);
+return alaDef;
+}
+
+
+DRAW(MAKEALA());
 
 //DRAW(alaDef,centroAlaA);

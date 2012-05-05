@@ -1,4 +1,5 @@
 
+var MAKETIMONE = function(){
 
 var getBezierS0 = function (controls){
 	
@@ -150,7 +151,9 @@ timoneVert.color([220/255,60/255,60/255]);
 
 
 var timone = STRUCT([timoneOrizz,timoneVert]);
+return timone;
+}
 
 
-DRAW(timone);
+DRAW(MAKETIMONE());
 
