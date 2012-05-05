@@ -1,4 +1,6 @@
 
+
+
 var getBezierS0 = function (controls,n,draw){
 	
 	var domain = INTERVALS(1)(n || 20);
@@ -12,21 +14,21 @@ var getBezierS0 = function (controls,n,draw){
 	return c;
 }
 
-
-
-var getBezierS1 = function (controls,n,draw){
+var getBezierS1 = function (controls,n1,n2){
 	
-	var domain = DOMAIN([[0,1],[0,1]])([20,20]);
+	var domain = DOMAIN([[0,1],[0,1]])([n1 || 20, n2 || 20]);
 	var mapping = BEZIER(S1)(controls);
 
 	var c = MAP(mapping)(domain);
-	if(draw){
-		DRAW(c);
-	}
 
 	return c;
 }
 
+var getSuperficie = function (cpoints,n1,n2){
+	var bzs = AA(BEZIER(S0))(cpoints);
+
+	return getBezierS1(bzs,n1,n2);
+}
 
 var traslaPunti = function (arr,x,y,z){
 	return arr.map(function(el){return [el[0]+x,el[1]+y,el[2]+z];});
@@ -41,18 +43,19 @@ var scaleAll = function (model,factor){
 
 //--------------------------------------------------------------------------
 
-var coloreAli = [25/255, 25/255, 112/255];
+var coloreAli = [55/255, 55/255, 157/255];
 var coloreStecche = [205/255, 133/255, 63/255];
 
 var lunghezzaAla = 5;
 var lunghezzaCentroAla = 1;
 var offsetAla = 0.7;
 
+var scheletroAlaBase = [[1.5,0,0],[0.1,0.05,0],[0,0,0],[0,0,0],[0,0,0],[0,0,0],[0,0,0],[0,0.3,0],[1.5,0,0]];
+
 //---------------------------------------------------------------------------
 var mkAla = function  (pos) {
 	pos = pos || [0,0,0];
 	var domain = INTERVALS(1)(20);
-	var scheletroAlaBase = [[1.5,0,0],[0.1,0.05,0],[0,0,0],[0,0,0],[0,0,0],[0,0,0],[0,0,0],[0,0.3,0],[1.5,0,0]];
 	var scheletroAlaFine = [[1.5,0,lunghezzaAla],[1.3,0,lunghezzaAla+0.5],[1,0,lunghezzaAla+0.5],[0.4,0,lunghezzaAla+0.5],[0.2,0,lunghezzaAla+0.5],
 							[0.1,0,lunghezzaAla],[0,0,lunghezzaAla],[0.1,0,lunghezzaAla],[0.2,0,lunghezzaAla+0.5],[0.4,0,lunghezzaAla+0.5],[1.1,0,lunghezzaAla+0.5],
 							[1.3,0,lunghezzaAla+0.5],[1.5,0,lunghezzaAla]];
@@ -120,9 +123,11 @@ var mkStecca = function (pos){
 	var puntaUp = traslaPunti(schPunta,0,0,10);
 
 
-	var ovals = AA(BEZIER(S0))([punta,ovBase,ovUp,puntaUp]);
+//	var ovals = AA(BEZIER(S0))([punta,ovBase,ovUp,puntaUp]);
 
-	var stecca = getBezierS1(ovals);
+//	var stecca = getBezierS1(ovals);
+	var stecca = getSuperficie([punta,ovBase,ovUp,puntaUp]);
+
 	
 	stecca = MAP(function(p){return [p[0],p[1]+0.5-(p[2]*0.5/2),p[2]];})(S([0,1,2])([0.2,0.2,0.2])(stecca));
 	
@@ -131,7 +136,16 @@ var mkStecca = function (pos){
 
 	return stecca;
 }
-
+var mkCentroAla = function (){
+	var scheletroAlaBaseTraslato = [[0,1.5,0],[0,0.1,0.05],[0,0,0],[0,0,0],[0,0,0],[0,0,0],[0,0,0],[0,0,0.3],[0,1.5,0]];
+	var scheletroCentroAlaBase = [[0,1,0],[0,0.1,0.05],[0,0,0],[0,0,0],[0,0,0],[0,0,0],[0,0,0],[0,0,0.3],[0,1,0]];
+	var schCentroAlaMedio = traslaPunti(scheletroCentroAlaBase,0.3,0,0);
+	var schCentroAlaEsterno = traslaPunti(scheletroAlaBaseTraslato,0.5,0,0);
+	var centroAlaA = getSuperficie([scheletroCentroAlaBase,schCentroAlaMedio,schCentroAlaEsterno]);
+	
+	centroAlaA.color(coloreAli);
+	return centroAlaA;
+}
 
 var ali = STRUCT([mkAla([0,0.5,0]), mkAla([0,0,2])]);
 var stecche = STRUCT([mkStecca([2,0.4,0.3]), mkStecca([2,1.2,0.3]),
@@ -145,5 +159,16 @@ stecche.color(coloreStecche);
 
 
 var alaDef = STRUCT([ali,stecche]);
+alaDef.translate([0],[0.5]);
+
+
+var cAla1 = mkCentroAla();
+cAla1.translate([0,1,2],[0,0.5,0]);
+var cAla2 = mkCentroAla();
+cAla2.translate([0,1,2],[0,0,2]);
+
+var alaDef = STRUCT([alaDef,cAla2,cAla1]);
 
 DRAW(alaDef);
+
+//DRAW(alaDef,centroAlaA);
