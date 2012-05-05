@@ -12,6 +12,25 @@ var getBezierS0 = function (controls){
 	return c;
 }
 
+var mkSphere = function(r,n){
+	var d = DOMAIN([[0,PI],[0,2*PI]])([n,2*n]);
+
+	var map = function (p){
+		var alfa = p[0]-(PI/2);
+		var beta = p[1];
+
+		var x = r*COS(alfa)*COS(beta);
+		var y = r*COS(alfa)*SIN(beta);
+		var z = r*SIN(alfa);
+
+		return [x,y,z];
+	}
+	var m = MAP(map)(d);
+
+
+	return m;
+}
+
 
 
 var getBezierS1 = function (controls,n1,n2){
@@ -85,6 +104,12 @@ puntatelaioaio.push(finepunta);
 var puntatelaio = getSuperficie(puntatelaioaio,25,15);
 
 
+// punta motore 
+var naso = mkSphere(0.5,15);
+
+naso.scale([0,1,2],[0.4,2,0.4]);
+naso.translate([0,1,2],[0,0.5,-0.6]);
+
 // copriamo le vegogne
 
 var fakepoint = [punta[0],punta[0]];
@@ -92,7 +117,7 @@ var fakepoint = [punta[0],punta[0]];
 var vergogne =  getSuperficie([traslaPunti(scalaPunti(punta,1.1,1.1,1.1),0,0,0.05),fakepoint]);
 
 
-puntatelaio = STRUCT([puntatelaio,vergogne]);
+puntatelaio = STRUCT([puntatelaio,vergogne,naso]);
 
 // CORPO -----------------------------------
 
