@@ -144,7 +144,7 @@ var timoneVert = STRUCT([surf1vert,surf2vert,bordoVert,vergogne]);
 var timoneOrizz = STRUCT([timoneOrizz1,timoneOrizz2]);
 
 
-var coloreTimone = [25/255, 25/255, 112/255];
+var coloreTimone = [80/255, 80/255, 255/255];
 
 timoneOrizz.color(coloreTimone);
 timoneVert.color([220/255,60/255,60/255]);

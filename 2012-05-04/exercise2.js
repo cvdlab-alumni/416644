@@ -137,7 +137,7 @@ var contornoSmussato = scalaPunti(circleConMolteplicita([1,3,3,0,3,3,1]),0.65,0.
 
 
 var quadrato = scalaPunti(circleConMolteplicita([1,9,9,1,9,9,1]),0.5,0.5,0.5);
-var coda = scalaPunti(circleConMolteplicita([1,19,19,1,19,19,1]),0.00,0.5,0.05);
+var coda = scalaPunti(circleConMolteplicita([1,19,19,1,19,19,1]),0.00,0.5,0.1);
 
 corpotelaioaio.push(finepunta);
 /*
@@ -158,7 +158,7 @@ corpotelaioaio.push(traslaPunti(coda,0,8,-0.8));
 var corpo = getSuperficie(corpotelaioaio);
 
 var colorePunta =[254/255, 254/255, 254/255];
-var coloreCorpo = [25/255, 25/255, 112/255];
+var coloreCorpo = [80/255, 80/255, 255/255];
 var coloreNaso = [205/255, 133/255, 63/255];
 var coloreElica = [165/255, 42/255, 42/255];
 
@@ -169,9 +169,26 @@ naso.color(coloreNaso);
 elica.color(coloreElica);
 
 
-var telaio = STRUCT([puntatelaio,corpo,naso,elica]);
+var ruota = TORUS_SURFACE([0.1, 0.1])([15,15,8]);
+ruota.rotate([0,2],[PI/2]);
+ruota.translate([0,1,2],[0.7,2.05,-3]);
+ruota.color([0.1,0.1,0.1]);
+
+
+var stecca = CUBOID([0.1,0.1,2]);
+stecca.translate([0,1,2],[0.5,2,-3]);
+stecca.color(coloreNaso);
+
+var carrello1 = STRUCT([ruota,stecca]);
+var carrello2 = S([0])([-1])(carrello1);
+
+var carrello = STRUCT([carrello1,carrello2]);
+
+
+var telaio = STRUCT([puntatelaio,corpo,naso,elica,carrello]);
 
 return telaio;
 }
+
 
 DRAW(MAKETELAIO());

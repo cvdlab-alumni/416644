@@ -43,7 +43,7 @@ var scaleAll = function (model,factor){
 
 //--------------------------------------------------------------------------
 
-var coloreAli = [55/255, 55/255, 157/255];
+var coloreAli = [80/255, 80/255, 255/255];
 var coloreStecche = [205/255, 133/255, 63/255];
 
 var lunghezzaAla = 5;
