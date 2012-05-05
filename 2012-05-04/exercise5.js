@@ -387,7 +387,19 @@ var carrello2 = S([0])([-1])(carrello1);
 
 var carrello = STRUCT([carrello1,carrello2]);
 
-var telaio = STRUCT([puntatelaio,corpo,naso,elica,carrello]);
+var coloreVetro = [0, 254/255, 254/255,0.4];
+var vetro = CUBOID([1.6,0.02,1]);
+var vetroCov = CUBOID([1.6,0.02,0.05]);
+
+vetro.color(coloreVetro);
+vetro.translate([0,1,2],[-0.8,1,0]);
+vetroCov.color([0, 254/255, 254/255]);
+vetroCov.translate([0,1,2],[-0.8,1,1]);
+
+
+
+
+var telaio = STRUCT([puntatelaio,corpo,naso,elica,carrello,vetro,vetroCov]);
 
 return telaio;
 }
