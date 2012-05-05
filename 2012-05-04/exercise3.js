@@ -108,10 +108,10 @@ var circleConMolteplicita2 = function (arr) {
 
 
 var schTimOrizz = circleConMolteplicita([9,11,9,11,11,9]);
-var schTimOrizz2 = traslaPunti(schTimOrizz,0,0,-0.1);
+var schTimOrizz2 = traslaPunti(schTimOrizz,0,0,-0.05);
 
 var surf1orizz = getSuperficie([schTimOrizz,[[0,0,0],[0,0,0]]]);
-var surf2orizz = getSuperficie([schTimOrizz2,[[0,0,-0.1],[0,0,-0.1]]]);
+var surf2orizz = getSuperficie([schTimOrizz2,[[0,0,-0.05],[0,0,-0.05]]]);
 
 var bordoOrizz = getSuperficie([schTimOrizz,schTimOrizz2]);
 

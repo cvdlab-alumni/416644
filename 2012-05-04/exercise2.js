@@ -137,7 +137,7 @@ var contornoSmussato = scalaPunti(circleConMolteplicita([1,3,3,0,3,3,1]),0.65,0.
 
 
 var quadrato = scalaPunti(circleConMolteplicita([1,9,9,1,9,9,1]),0.5,0.5,0.5);
-var coda = scalaPunti(circleConMolteplicita([1,19,19,1,19,19,1]),0.00,0.5,0.1);
+var coda = scalaPunti(circleConMolteplicita([1,19,19,1,19,19,1]),0.00,0.5,0.15);
 
 corpotelaioaio.push(finepunta);
 /*
@@ -183,6 +183,8 @@ var carrello1 = STRUCT([ruota,stecca]);
 var carrello2 = S([0])([-1])(carrello1);
 
 var carrello = STRUCT([carrello1,carrello2]);
+
+
 
 
 var telaio = STRUCT([puntatelaio,corpo,naso,elica,carrello]);
