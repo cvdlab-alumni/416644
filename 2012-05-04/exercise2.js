@@ -157,7 +157,7 @@ corpotelaioaio.push(traslaPunti(coda,0,8,-0.8));
 
 var corpo = getSuperficie(corpotelaioaio);
 
-var colorePunta =[255/255, 255/255, 255/255];
+var colorePunta =[254/255, 254/255, 254/255];
 var coloreCorpo = [25/255, 25/255, 112/255];
 var coloreNaso = [205/255, 133/255, 63/255];
 var coloreElica = [165/255, 42/255, 42/255];
