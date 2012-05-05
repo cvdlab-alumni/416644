@@ -126,7 +126,7 @@ var fakepoint = [punta[0],punta[0]];
 var vergogne =  getSuperficie([traslaPunti(scalaPunti(punta,1.1,1.1,1.1),0,0,0.05),fakepoint]);
 
 
-puntatelaio = STRUCT([puntatelaio,vergogne,naso,elica]);
+puntatelaio = STRUCT([puntatelaio,vergogne]);
 
 // CORPO -----------------------------------
 
@@ -159,10 +159,16 @@ var corpo = getSuperficie(corpotelaioaio);
 
 var colorePunta =[255/255, 255/255, 255/255];
 var coloreCorpo = [25/255, 25/255, 112/255];
+var coloreNaso = [205/255, 133/255, 63/255];
+var coloreElica = [165/255, 42/255, 42/255];
+
 
 puntatelaio.color(colorePunta);
 corpo.color(coloreCorpo);
+naso.color(coloreNaso);
+elica.color(coloreElica);
 
-var telaio = STRUCT([puntatelaio,corpo]);
+
+var telaio = STRUCT([puntatelaio,corpo,naso,elica]);
 
 DRAW(telaio);
