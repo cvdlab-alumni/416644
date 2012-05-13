@@ -106,6 +106,11 @@ var makeTower = function(circleSegments,heightHRSegments,heightLRSegments){ //i 
 
 		var TORRE = STRUCT([torreHR,torreLR,baseTorre,tappo,STRUCT(coronaAlta)]);
 
+		var altezza = 2;
+		var raggio = 0.5;
+
+		TORRE.scale([0,1,2],[(raggio/2),(raggio/2),(altezza/5.3)]);
+
 		return TORRE;
 
 	}
