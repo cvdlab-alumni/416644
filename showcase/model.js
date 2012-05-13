@@ -110,13 +110,15 @@ var makeTower = function(circleSegments,heightHRSegments,heightLRSegments){ //i 
 		var raggio = 0.5;
 
 		TORRE.scale([0,1,2],[(raggio/2),(raggio/2),(altezza/5.3)]);
+		TORRE.color([255/255,235/255,190/255]);
+
 
 		return TORRE;
 
 	}
 
 
-var tower = makeTower();
-tower.color([255/255,235/255,190/255]);
+var scmodel = makeTower();
 
-DRAW(tower);
+DRAW(scmodel);
+
