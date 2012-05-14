@@ -22,19 +22,19 @@ var makeTower = function(circleSegments,heightHRSegments,heightLRSegments){ //i 
 
 		}
 
+		var mkCoronaCircolare = function(r1,r2,h,n){
+			var domain = DOMAIN([[r1,r2],[0,2*PI],[0,1]])([1,2*n,1]);
 
-var traslaPunti = function (arr,x,y,z){
-	return arr.map(function(el){return [el[0]+x,el[1]+y,el[2]+z];});
-}
-var scalaPunti = function (arr,x,y,z){
-	return arr.map(function(el){return [el[0]*x,el[1]*y,el[2]*z];});
-}
+			var mapping = function(p){
+				var r = p[0];
+				var alfa = p[1];
+				var dh = p[2];
 
-var scaleAll = function (model,factor){
-	return S([0,1,2])([factor,factor,factor])(model);
-}
+				return [r*COS(alfa),r*SIN(alfa),h*dh];
+			}
 
-
+			return MAP(mapping)(domain);
+		}
 
 		var mkPartOfCoronaCircolare = function(r1,r2,h,alfa1,alfa2,n){
 			var domain = DOMAIN([[r1,r2],[alfa1,alfa2],[0,1]])([1,n,1]);
@@ -68,21 +68,17 @@ var scaleAll = function (model,factor){
 
 		var profiloHIGHRes = [rigonfiamentoBasso,raccordoRigonfiamento,corpo];
 
-
-		var domainHRes = DOMAIN([[0,1],[0,2*PI]])([heightHRSegments||10,circleSegments||40]);
-		var domainLRes = DOMAIN([[0,1],[0,2*PI]])([heightLRSegments||10,circleSegments||40]);
-
-
-		var getSurf = function(curva,domain){
+		var getSurf = function(curva,n1,n2){
+			var domain = DOMAIN([[0,1],[0,2*PI]])([n1||10,n2||40]);
 			var mapping = ROTATIONAL_SURFACE(curva);
 			return MAP(mapping)(domain);
 		}
 
 		var getSurfLR = function(curva){
-			return getSurf(curva,domainLRes);
+			return getSurf(curva,heightLRSegments,circleSegments);
 		}
 		var getSurfHR = function(curva){
-			return getSurf(curva,domainHRes);
+			return getSurf(curva,heightHRSegments,circleSegments);
 		}
 
 
