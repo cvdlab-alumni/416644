@@ -7,8 +7,13 @@ var makeTower = function(circleSegments,heightHRSegments,heightLRSegments){ //i 
 		heightLRSegments = heightLRSegments || 10;
 		heightHRSegments = heightHRSegments || 40;
 
-		var mkCilinder = function(r,h,n){
-			var domain = DOMAIN([[0,1],[0,2*PI],[0,1]])([1,n,1]);
+		var cilinderDomain = DOMAIN([[0,1],[0,2*PI],[0,1]])([1,circleSegments,1]);
+		var domainHRes = DOMAIN([[0,1],[0,2*PI]])([heightHRSegments,circleSegments]);
+		var domainLRes = DOMAIN([[0,1],[0,2*PI]])([heightLRSegments,circleSegments]);
+
+
+		var mkCilinder = function(r,h){
+			
 
 			var mapping = function(p){
 				var dr = p[0];
@@ -18,7 +23,7 @@ var makeTower = function(circleSegments,heightHRSegments,heightLRSegments){ //i 
 				return [r*dr*COS(alfa),r*dr*SIN(alfa),h*dh];
 			}
 
-			return MAP(mapping)(domain);
+			return MAP(mapping)(cilinderDomain);
 
 		}
 
@@ -51,7 +56,7 @@ var scaleAll = function (model,factor){
 		}
 
 
-		var baseTorre = mkCilinder(2,0.3,circleSegments);
+		var baseTorre = mkCilinder(2,0.3);
 
 		var rigonfiamentoBasso = CUBIC_HERMITE(S0)([[1.9,0,0.3],[1.8,0,1],[0.5,0,0.5],[-0.8,0,0.5]]); //p0 p1 t0 t1
 		var raccordoRigonfiamento = CUBIC_HERMITE(S0)([[1.8,0,1],[1.5,0,1.5],[-0.8,0,0.5],[0,0,0.3]]); //p0 p1 t0 t1
@@ -68,9 +73,6 @@ var scaleAll = function (model,factor){
 
 		var profiloHIGHRes = [rigonfiamentoBasso,raccordoRigonfiamento,corpo];
 
-
-		var domainHRes = DOMAIN([[0,1],[0,2*PI]])([heightHRSegments||10,circleSegments||40]);
-		var domainLRes = DOMAIN([[0,1],[0,2*PI]])([heightLRSegments||10,circleSegments||40]);
 
 
 		var getSurf = function(curva,domain){
@@ -89,7 +91,7 @@ var scaleAll = function (model,factor){
 		var torreLR = STRUCT(AA(getSurfLR)(profiloLOWRes));
 		var torreHR = STRUCT(AA(getSurfHR)(profiloHIGHRes));
 
-		var tappo = mkCilinder(1.7,0.1,circleSegments);
+		var tappo = mkCilinder(1.7,0.1);
 		tappo.translate([2],[4.7]);
 
 		var coronaAlta = [];
