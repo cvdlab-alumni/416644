@@ -12,11 +12,6 @@ var makeTower = function(circleSegments,heightHRSegments,heightLRSegments){ //i 
 		var domainLRes = DOMAIN([[0,1],[0,2*PI]])([heightLRSegments,circleSegments]);
 
 
-		var altezza = 2;
-		var raggio = 0.4;
-
-
-
 		var mkCilinder = function(r,h){
 			
 
@@ -33,20 +28,16 @@ var makeTower = function(circleSegments,heightHRSegments,heightLRSegments){ //i 
 		}
 
 
-		var traslaPunti = function (arr,x,y,z){
-			return arr.map(function(el){return [el[0]+x,el[1]+y,el[2]+z];});
-		}
-		var scalaPunti = function (arr,x,y,z){
-			return arr.map(function(el){return [el[0]*x,el[1]*y,el[2]*z];});
-		}
+var traslaPunti = function (arr,x,y,z){
+	return arr.map(function(el){return [el[0]+x,el[1]+y,el[2]+z];});
+}
+var scalaPunti = function (arr,x,y,z){
+	return arr.map(function(el){return [el[0]*x,el[1]*y,el[2]*z];});
+}
 
-		var scalaPerTorre = function(arr){
-			return scalaPunti(arr,(raggio/2),(raggio/2),(altezza/5.3));
-		}
-
-		var scaleAll = function (model,factor){
-			return S([0,1,2])([factor,factor,factor])(model);
-		}
+var scaleAll = function (model,factor){
+	return S([0,1,2])([factor,factor,factor])(model);
+}
 
 
 
@@ -65,17 +56,17 @@ var makeTower = function(circleSegments,heightHRSegments,heightLRSegments){ //i 
 		}
 
 
-		var baseTorre = mkCilinder(raggio,0.3*(altezza/5.3));
+		var baseTorre = mkCilinder(2,0.3);
 
-		var rigonfiamentoBasso = CUBIC_HERMITE(S0)(scalaPerTorre( [[1.9,0,0.3],[1.8,0,1],[0.5,0,0.5],[-0.8,0,0.5]] ) ); //p0 p1 t0 t1
-		var raccordoRigonfiamento = CUBIC_HERMITE(S0)(scalaPerTorre( [[1.8,0,1],[1.5,0,1.5],[-0.8,0,0.5],[0,0,0.3]] ) ); //p0 p1 t0 t1
-		var scalino = CUBIC_HERMITE(S0)(scalaPerTorre( [[1.5,0,1.5],[1.4,0,1.6],[0,0,0.3],[-0.15,0,0.3]] ) ); //p0 p1 t0 t1
-		var corpo = CUBIC_HERMITE(S0)(scalaPerTorre( [[1.4,0,1.6],[1.2,0,3.8],[-0.3,0,0.5],[0,0,2.5]],40 ) ); //p0 p1 t0 t1
-		var scalinoAlto = CUBIC_HERMITE(S0)(scalaPerTorre( [[1.2,0,3.8],[1.4,0,3.9],[0,0,0.3],[0.1,0,0.3]] ) ); //p0 p1 t0 t1
-		var collo = CUBIC_HERMITE(S0)(scalaPerTorre( [[1.4,0,3.9],[1.65,0,4.25],[0.1,0,0.3],[0.4,0,0.1]] ) ); //p0 p1 t0 t1
-		var coronaBassa = CUBIC_HERMITE(S0)(scalaPerTorre( [[1.65,0,4.25],[1.65,0,4.37],[0.2,0,0],[-0.2,0,0]] ) ); //p0 p1 t0 t1
-		var scanalatura = CUBIC_HERMITE(S0)(scalaPerTorre( [[1.65,0,4.37],[1.65,0,4.4],[-0.2,0,0],[0.2,0,0]] ) ); //p0 p1 t0 t1
-		var coronaMedia = CUBIC_HERMITE(S0)(scalaPerTorre( [[1.65,0,4.4],[1.7,0,4.7],[0.2,0,0],[0,0,0.5]] ) ); //p0 p1 t0 t1
+		var rigonfiamentoBasso = CUBIC_HERMITE(S0)([[1.9,0,0.3],[1.8,0,1],[0.5,0,0.5],[-0.8,0,0.5]]); //p0 p1 t0 t1
+		var raccordoRigonfiamento = CUBIC_HERMITE(S0)([[1.8,0,1],[1.5,0,1.5],[-0.8,0,0.5],[0,0,0.3]]); //p0 p1 t0 t1
+		var scalino = CUBIC_HERMITE(S0)([[1.5,0,1.5],[1.4,0,1.6],[0,0,0.3],[-0.15,0,0.3]]); //p0 p1 t0 t1
+		var corpo = CUBIC_HERMITE(S0)([[1.4,0,1.6],[1.2,0,3.8],[-0.3,0,0.5],[0,0,2.5]],40); //p0 p1 t0 t1
+		var scalinoAlto = CUBIC_HERMITE(S0)([[1.2,0,3.8],[1.4,0,3.9],[0,0,0.3],[0.1,0,0.3]]); //p0 p1 t0 t1
+		var collo = CUBIC_HERMITE(S0)([[1.4,0,3.9],[1.65,0,4.25],[0.1,0,0.3],[0.4,0,0.1]]); //p0 p1 t0 t1
+		var coronaBassa = CUBIC_HERMITE(S0)([[1.65,0,4.25],[1.65,0,4.37],[0.2,0,0],[-0.2,0,0]]); //p0 p1 t0 t1
+		var scanalatura = CUBIC_HERMITE(S0)([[1.65,0,4.37],[1.65,0,4.4],[-0.2,0,0],[0.2,0,0]]); //p0 p1 t0 t1
+		var coronaMedia = CUBIC_HERMITE(S0)([[1.65,0,4.4],[1.7,0,4.7],[0.2,0,0],[0,0,0.5]]); //p0 p1 t0 t1
 
 
 		var profiloLOWRes = [scalino,scalinoAlto,collo,coronaBassa,scanalatura,coronaMedia];
@@ -100,8 +91,8 @@ var makeTower = function(circleSegments,heightHRSegments,heightLRSegments){ //i 
 		var torreLR = STRUCT(AA(getSurfLR)(profiloLOWRes));
 		var torreHR = STRUCT(AA(getSurfHR)(profiloHIGHRes));
 
-		var tappo = mkCilinder(1.7*(raggio/2),0.1*(altezza/5.3));
-		tappo.translate([2],[4.7*(altezza/5.3)]);
+		var tappo = mkCilinder(1.7,0.1);
+		tappo.translate([2],[4.7]);
 
 		var coronaAlta = [];
 
@@ -112,8 +103,8 @@ var makeTower = function(circleSegments,heightHRSegments,heightLRSegments){ //i 
 			var alfa1 = i*(2*PI/numDenti);
 			var alfa2 = alfa1+(((1-percVuoto)*2*PI)/numDenti);
 
-			var dente = mkPartOfCoronaCircolare(1.35*(raggio/2),1.7*(raggio/2),0.5*(altezza/5.3),alfa1,alfa2,Math.round( (circleSegments*(1-percVuoto))/numDenti ) );
-			dente.translate([2],[4.8*(altezza/5.3)]);
+			var dente = mkPartOfCoronaCircolare(1.35,1.7,0.5,alfa1,alfa2,Math.round( (circleSegments*(1-percVuoto))/numDenti ) );
+			dente.translate([2],[4.8]);
 
 			coronaAlta.push(dente);
 		}
@@ -121,7 +112,10 @@ var makeTower = function(circleSegments,heightHRSegments,heightLRSegments){ //i 
 
 		var TORRE = STRUCT([torreHR,torreLR,baseTorre,tappo,STRUCT(coronaAlta)]);
 
-		// TORRE.scale([0,1,2],[(raggio/2),(raggio/2),(altezza/5.3)]);
+		var altezza = 2;
+		var raggio = 0.4;
+
+		TORRE.scale([0,1,2],[(raggio/2),(raggio/2),(altezza/5.3)]);
 		TORRE.color([255/255,235/255,190/255]);
 
 
