@@ -1,0 +1,351 @@
+<!doctype html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="chrome=1">
+    <title>Villa Pisani in Bagnolo by Pronte</title>
+    <link rel="stylesheet" href="stylesheets/styles.css">
+    <link rel="stylesheet" href="stylesheets/pygment_trac.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js"></script>
+    <script src="javascripts/respond.js"></script>
+    <!--[if lt IE 9]>
+      <script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+    <![endif]-->
+    <!--[if lt IE 8]>
+    <link rel="stylesheet" href="stylesheets/ie.css">
+    <![endif]-->
+    <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
+
+  </head>
+  <body>
+      <div id="header">
+        <nav>
+          <li class="fork"><a href="https://github.com/Pronte/cg-final-project">View On GitHub</a></li>
+          <li class="downloads"><a href="https://github.com/Pronte/cg-final-project/zipball/master">ZIP</a></li>
+          <li class="downloads"><a href="https://github.com/Pronte/cg-final-project/tarball/master">TAR</a></li>
+          <li class="title">DOWNLOADS</li>
+        </nav>
+      </div><!-- end header -->
+
+    <div class="wrapper">
+
+      <section>
+        <div id="title">
+          <h1>Villa Pisani in Bagnolo</h1>
+          <p>3D rappresentation of Villa Pisani by Andrea Palladio, made by Alessio Conte</p>
+          <hr>
+          <span class="credits left">Project maintained by <a href="https://github.com/Pronte">Pronte</a></span>
+          <span class="credits right">Hosted on GitHub Pages &mdash; Theme by <a href="http://twitter.com/#!/michigangraham">mattgraham</a></span>
+        </div>
+
+        <h2>Villa Pisani in Bagnolo</h2>
+
+<p><br><br></p>
+
+<h3>THE VILLA</h3>
+
+<p>The Villa Pisani is a patrician villa designed by Andrea Palladio, located in Bagnolo, a small settlement in the comune of Lonigo in the Veneto region of Italy.</p>
+
+<p><img src="https://github.com/Pronte/cg-final-project/raw/master/images/front2.jpg" alt="villa_pisani"><em>Front view of Villa Pisani.</em></p>
+
+<p><br><br>It is considered the most representative work of the architect's juvenile period.
+Palladio started designing Villa Pisani in 1541, just after returning from his first trip to Rome.
+The villa was then built within 1544 and 1545; it was the beginning of a glorious collaboration between the architect and the <em>Serenissima</em>.
+<br>The Pisani were a rich family of Venetian nobles who owned several Villas Pisani, two of them designed by Andrea Palladio. The villa at Bagnolo was built in the 1540s and represents Palladio's first villa designed for a patrician family of Venice: his earlier villa commissions were from provincial nobility in the Vicenza area. The villa at Bagnolo was at the centre of an agricultural estate, as were most of the villas commissioned from Palladio. It was designed with rusticated features to complement its rural setting; in contrast, the Villa Pisani at Montagnana in a semi-urban setting utilizes more refined motifs.
+In 1570 Palladio published a version of the villa in his Four Books of Architecture.
+<img src="https://github.com/Pronte/cg-final-project/raw/master/images/villa-pisani-on-palladio-book.jpg" alt="Original project of Villa Pisani"><em>Original project of Villa Pisani</em>
+<br><br>The executed villa differs noticeably from the design. The deviations may have been in response to certain conditions on the actual site.
+An engraved ground plan of 1778 by Ottavio Bertotti Scamozzi, gives a clear idea of the villa as it appeared in the 18th century. There was originally a a long barchessa (wing) at the back of the courtyard terminating in dovecotes that kept the villa supplied with squab; this wing was admired by Vasari, but it was demolished in the nineteenth century and replaced by a structure that bears no relation to the Palladian facade it faces.
+<img src="https://github.com/Pronte/cg-final-project/raw/master/images/villa-pisani-bertotti-plant.jpg" alt="Ground plan of the villa by Ottavio Bertotti Scamozzi"><em>Ground plan of the villa by Ottavio Bertotti Scamozzi</em>
+<br><br>The interior features a central T-shaped salone with barrel vaulting inspired by Roman baths; it is decorated with frescoes.
+In 1996, UNESCO included the villa in the World Heritage Site "City of Vicenza and the Palladian Villas of the Veneto".</p>
+
+<h6>Sources:</h6>
+
+<p><a href="http://www.villapisani.net/">villapisani.net</a> /
+<a href="http://en.wikipedia.org/wiki/Villa_Pisani_(Bagnolo)">Wikipedia-en</a> /
+<a href="http://it.wikipedia.org/wiki/Villa_Pisani_(Bagnolo)">Wikipedia-it</a></p>
+
+<h3>ANALYZING THE VILLA</h3>
+
+<p><br>The model is based on Villa Pisani as it appears now.
+<br>This is because there was little documentation about the original version, and it was not enough to make a faithful reproduction of the villa.
+<br>On the other hand, there were a good amount of pictures of the current version on the web.</p>
+
+<p><br>After gathering some images of the villa (most of which from the same sources quoted above) I noticed that the two towers and the two facades were respectively equal to each other, so one side of the building could be obtained simply by scaling the other side by a -1 factor.</p>
+
+<p><br>With this considered, the villa was decomposed in three (two, in fact) main sections:</p>
+
+<ul>
+<li>The central part</li>
+<li>The right side</li>
+<li>The left side (as said, just the scaled version of the right side)
+<br><br>
+</li>
+</ul><h4>THE CENTRAL PART (THE FACADE)</h4>
+
+<p>This part includes the facade, the roof, and few elements of the backside (the half-rose window, the back door and the stairs on the back).
+The facade is the most complex part of the villa.
+It's main parts are a portico and a tympanum, which can be found in most of Palladio's villas, and the circular steps.
+<br>The portico is  is characterized by six pilasters (fake columns), placed on the portico's piers to give the impression that they are real columns.
+<img src="https://github.com/Pronte/cg-final-project/raw/master/images/front-mq-cut.jpg" alt="Facade of Villa Pisani"><em>Facade of Villa Pisani</em>
+<br>Inside the portico there are two simpler pilasters, doors which connect it with the two towers, and the front door as well.</p>
+
+<h3>THE SIDE</h3>
+
+<p>The side of the villa can be itself decomposed in these parts:</p>
+
+<ul>
+<li>The tower</li>
+<li>The side wall</li>
+<li>The back wall</li>
+<li>The base (upper part of the basement)</li>
+</ul><h3>THE CODE</h3>
+
+<p>For the realization of this model I tried to disassemble each part of the villa into it's smallest elements, and then reassemble them hierarchically, to enhance the re-usability and the readability of the code.
+All the elements are created in local coordinates.
+If an element is composed by multiple parts, the parts are created separately in local coordinates, then assembled together.
+Doing so gives the chance to re-use all the elements (single ones and composed ones) multiple times for multiple purposes,  and avoids having to make the same object twice.</p>
+
+<p>When possible, I tried to use the shortcuts of Plasm language and keep the functional approach.
+However, I made a few (really few!) exceptions to reduce the execution time of the code.</p>
+
+<p>For example, instead of this:</p>
+
+<pre><code>var colonna = mkColonna();
+    colonna.translate([0,2],[dimTorre+intermezzoTorreColonne,2.2]);
+var tCol1 = T([0])([dimColonna + intermezzoColonnaColonna]);
+var tCol2 = T([0])([lArcata + dimColonna]);
+var colonne = STRUCT([colonna,tCol1,colonna,tCol2,colonna,tCol2,colonna,tCol2,colonna,tCol1,colonna]);
+</code></pre>
+
+<p>which is short, nice and clean,
+<br>I used this:</p>
+
+<pre><code>var colonna = mkColonna();
+    colonna.translate([0,2],[dimTorre+intermezzoTorreColonne,2.2]);
+    var tCol1 = T([0])([dimColonna + intermezzoColonnaColonna]);
+    var tCol2 = T([0])([3 + dimColonna]);
+
+    var colonna2 = tCol1(colonna);
+    var colonna3 = tCol2(colonna2);
+    var colonna4 = tCol2(colonna3);
+    var colonna5 = tCol2(colonna4);
+    var colonna6 = tCol1(colonna5);
+var colonne = STRUCT([colonna,colonna2,colonna3,colonna4,colonna5,colonna6]);
+</code></pre>
+
+<p>which is longer, but reduces the execution time by almost 2 seconds, since the columns are the elements with the highest number of polygons in the whole villa, and in the second way the generation of a few unnecessary clones is avoided.</p>
+
+<h3>UTILITIES</h3>
+
+<p>To make the implementation easier I used a few utility functions.
+Between the most useful there were those that shortened the code, like:</p>
+
+<pre><code>var mkNub = function(cp,grade,sel){
+    sel = sel || S0;
+    grade = grade || 1;
+    if (grade == 1 ){
+        return NUBS(sel)(1)(mkKnotsG1(cp))(cp);
+    } else {
+        return NUBS(sel)(2)(mkKnotsG2(cp))(cp);
+    }
+}
+var mkNubSurfaceWithCPointsAndGrades = function (cps, curvesGrade, surfGrade){
+    curvesGrade = curvesGrade || 1;
+    surfGrade = surfGrade || 1;
+    var handles = cps.map(function(cp){return mkNub(cp,curvesGrade,S0);});
+    return mkNub(handles,surfGrade,S1);
+}
+</code></pre>
+
+<p>This and other functions made me avoid writing the same things over and over again.</p>
+
+<p>To reduce the load time of the model, I used a map that specified the segmentation for the most complex part of it.
+In this way, all that was needed to change the segmentation of the whole villa was to switch to the desired map.
+During the developing, for example, I used as few polygons as possible, so I could load the entire model when I needed it without wasting too much time.</p>
+
+<pre><code>var resMapHRes = {
+    "capitello" : [20,20],
+    "blocco" : [12,15],
+    "bloccoBase" : [8,5],
+    "retroArco" : [30,3],
+    "cunetta" : [15,1],
+    "cunettaAlta" : [42,1],
+    "cupolaPortico" : [42,20],
+    "soffittoPortico" : [1,42],
+    "puntale" : [25,4],
+    "gradiniCircolari" : [64],
+    "rosone" : [64]
+};
+var resMapMRes = {
+    "capitello" : [20,20],
+    "blocco" : [12,10],
+    "bloccoBase" : [8,4],
+    "retroArco" : [30,3],
+    "cunetta" : [10,1],
+    "cunettaAlta" : [28,1],
+    "cupolaPortico" : [28,28],
+    "soffittoPortico" : [1,28],
+    "puntale" : [15,4],
+    "gradiniCircolari" : [32],
+    "rosone" : [32]
+};
+var resMapLRes = {
+    "capitello" : [10,10],
+    "blocco" : [6,3],
+    "bloccoBase" : [6,3],
+    "retroArco" : [10,3],
+    "cunetta" : [10,1],
+    "cunettaAlta" : [18,1],
+    "cupolaPortico" : [18,18],
+    "soffittoPortico" : [1,18],
+    "puntale" : [8,4],
+    "gradiniCircolari" : [8],
+    "rosone" : [16]
+};
+var resMap = resMapHRes;
+</code></pre>
+
+<h3>REPRODUCING THE PARTS</h3>
+
+<h4>THE ROOF</h4>
+
+<p>Making the roof was quite simple, Once I found the vertexes I used the <code>TRIANGLE_STRIP</code> function, which creates a surface made of triangles having as vertexes the points in input.</p>
+
+<h4>THE FACADE</h4>
+
+<p>As I said before, the facade is the most complex (and hardest to model) part of the villa.
+The blocks of the pilasters and the arches were made one by one, and then copied of course to make the other arches and pilasters.
+To make the blocks I wrote this function:</p>
+
+<pre><code>var mkCustomBlocco = function (cpoints,spessore,n1,n2,durezzaCurva,grado){ //control points su X,Z !
+    if(cpoints == undefined){
+        console.log("NO CONTROL POINTS FOR THIS BLOCK!")
+        return undefined;
+    }
+    var spess = spessore || 0.2;
+    var n = n1 || resMap["blocco"][0];
+    var durezza = durezzaCurva || 2;
+    var g = grado || 2;
+
+    var detail = n2 || resMap["blocco"][1];
+    var domain2 = D11([n,detail]);
+    var base = mkNub(cpoints,g,S0);
+
+    var csopra = cpoints.map(function(p){return [p[0],spess,p[2]]});
+    var sopra = mkNub(csopra,g,S0);
+    var xEnd = 0;
+    var yEnd = spess;
+    var zEnd = 0;
+
+    for (var i in cpoints){
+        xEnd += cpoints[i][0];
+        zEnd += cpoints[i][2];
+    }
+    xEnd = xEnd/cpoints.length;
+    zEnd = zEnd/cpoints.length;
+
+    pEnd = [xEnd,yEnd,zEnd];
+    var puntoDiChiusura = function(){return pEnd;}
+
+    var controls = [base];
+    for(var i = 0; i&lt;durezza; i++){
+        controls.push(sopra);
+    }
+    controls.push(puntoDiChiusura);
+    var surf = BEZIER(S1)(controls);
+    var dsurf = MAP(surf)(domain2);
+    return dsurf;
+}
+</code></pre>
+
+<p>Which can build a block with custom length, height, depth and segmentation, and of course had default values.
+<img src="https://github.com/Pronte/cg-final-project/raw/master/screenshots/front-comparison.jpg" alt="comparison-front"><em>Comparison between the front side of the villa and the one of the model</em>
+<br></p>
+
+<h4>THE TOWER</h4>
+
+<p>Even if the walls of the tower are quite similar to the ones of the side wall, their height and their upper window differ (the basement window in the side of the tower is different as well), the lower window through was the same, so it was used for both.
+<img src="https://github.com/Pronte/cg-final-project/raw/master/screenshots/details.png" alt="details"><em>Detail of the tower, the side wall element, and door/window</em>
+<br>
+For some reason also the back door was exactly like the windows, so I made it with a customized version of a window without the glass and the window sill.</p>
+
+<h4>THE WALLS AND THE BASE</h4>
+
+<p>As seen in the picture above, the walls of the villa made by replying the same element multiple times.
+In a hierarchical view the basement wasn't a single element together with the walls, but since the windows had a 1 to 1 matching with the openings in the basement I decided to simplify things and make a single unit-element that included both.</p>
+
+<h4>THE BACK side</h4>
+
+<p><img src="https://github.com/Pronte/cg-final-project/raw/master/screenshots/retro-comparison.jpg" alt="comparison-back"><em>Comparison between the back side of the villa and the one of the model</em>
+<br>
+Here the most complex part was the half-rose window.
+I made the round part with this funciton:</p>
+
+<pre><code>    //crea la parte della corona circolare di raggio interno rInt e raggio esterno rEst
+    //che va da alfa1 a alfa2, campionata n volte, e estrusa di h.
+var mkPartOfCoronaCircolare = function(rInt,rEst,h,alfa1,alfa2,n){
+    var domain = DOMAIN([[rInt,rEst],[alfa1,alfa2],[0,1]])([1,n,1]);
+    var mapping = function(p){
+        var r = p[0];
+        var alfa = p[1];
+        var dh = p[2];
+        return [r*COS(alfa),r*SIN(alfa),h*dh];
+    }
+    return MAP(mapping)(domain);
+}
+</code></pre>
+
+<p>And the wall had to be round as well, so I made this:</p>
+
+<pre><code>    //crea la forma che si ottiene prendendo il quadrato di lato r con vertice in basso a sinistra nell'origine,
+    //e sottraendo ad esso la parte nel primo quadrante della circonferenza di raggio r centrata nell'origine.
+    //poi estrude dello spessore in input (spess)
+    //n e' il numero di slices della circonferenza.
+var mkComplementareQuartoDiCirconferenzaSolido = function(r,spess,n){
+    var points = [[r,r]];
+    var alfa;
+    var p;
+
+    for (var i =0; i&lt;=n; i++){
+        alfa = (i*PI/2)/(n);
+
+        p = [r*COS(alfa),r*SIN(alfa)];
+        points.push(p);
+    }
+
+    var compl2D = TRIANGLE_FAN(points);
+
+    var compl = EXTRUDE([spess])(compl2D);
+    return compl;
+}
+
+</code></pre>
+
+<h4>ASSEMBLING</h4>
+
+<p>Thanks to the hierarchical decomposition, the final assemble of the villa took "only" about one hundred lines.
+All the macro elements were created and put in the right place with <code>R</code>, <code>T</code> and <code>S</code> functions.
+There are a few parameters too: they can customize certain features of the villa, like the space between some elements or the size of certain doors (which modify the walls and all the necessary).</p>
+
+<h2>PICTURES</h2>
+
+<p>More pictures of the villa and the model can be found at:
+<a href="https://github.com/Pronte/cg-final-project/tree/master/screenshots">https://github.com/Pronte/cg-final-project/tree/master/screenshots</a>
+<a href="https://github.com/Pronte/cg-final-project/tree/master/images">https://github.com/Pronte/cg-final-project/tree/master/images</a></p>
+
+<h6>Some of the pictures were taken from wikipedia according to the GP Licence. Other were taken from google images. I own none of the pictures of Villa Pisani, and there was no copyright infringement intended.</h6>
+
+<p><img src="https://github.com/Pronte/cg-final-project/raw/master/screenshots/side-retro.png" alt="side-back"><em>Side and back of the villa</em>
+<br><img src="https://github.com/Pronte/cg-final-project/raw/master/screenshots/front.png" alt="front"><em>Front view of the villa and the roof</em></p>
+
+<p>Thank you for the attention.
+And thanks to Professor Alberto Paoluzzi and his assistants Enrico Marino and Federico Spini for the knowledge shared during the Computational Graphics course.</p>
+      </section>
+
+    </div>
+    <!--[if !IE]><script>fixScale(document);</script><!--<![endif]-->
+    
+  </body>
+</html>
