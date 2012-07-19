@@ -1,4 +1,4 @@
 Final project page can be found at:
-http://pronte.github.com/cg-final-project/
-or
-http://cvdlab-cg.github.com/416644/
+<br>http://pronte.github.com/cg-final-project/
+<br>or
+<br>http://cvdlab-cg.github.com/416644/
