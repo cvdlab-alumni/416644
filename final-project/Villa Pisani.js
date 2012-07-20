@@ -1642,7 +1642,7 @@ var mkParteCentraleRetro = function(){
 	var cerchioRosone = T([0,1,2])([r,yRos,spRos])(R([1,2])([PI/2])(mkPartOfCoronaCircolare(r-spRos,r,yRos,0,PI,resMap["rosone"][0])));
 	var rosone = COLOR(coloreBordiniChiari)(T([0,1,2])([dimRetro-r,0.3-0.01,hRosone])(STRUCT([baseRosone,sbarraRosone,cerchioRosone])));
 
-	var vetroRosone = COLOR(coloreVetri)(T([0,1,2])([dimRetro-r,0.3,hRosone])(SIMPLEX_GRID([[2*r],[-(yRos-spVetro-0.2),spVetro],[-spRos,r]])));
+	var vetroRosone = COLOR(coloreVetri)(T([0,1,2])([dimRetro-r,0.3,hRosone])(SIMPLEX_GRID([[2*r],[-(yRos-spVetro-0.21),spVetro],[-spRos,r]])));
 
 	var porta = T([0,1,2])([dimRetro-lporta/2,0.3+0.1,2.2])(mkFinestra(0,0,false,false,true));
 
