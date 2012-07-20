@@ -1665,7 +1665,7 @@ var mkPavimenti = function(){
 	var muro1 = COLOR(coloreIntonaco)(SIMPLEX_GRID([[-dimTorre,(lportico-lporta)/2,-lporta,(lportico-lporta)/2],[-0.3-6.5+fill,-0.1,0.1],[-2-0.2,0.3+5,4]]));
 	var muro2 = COLOR(coloreIntonaco)(SIMPLEX_GRID([[-dimTorre,-(lportico-lporta)/2,lporta],[-0.3-6.5+fill,-0.1,0.1],[-2-0.2,-3,0.3+2,4]]));
 	var fillpavimentoBase =  SIMPLEX_GRID([[-dimTorre,lportico],[-0.3-6.5+fill,fill],[-1.9,0.3]]);
-	var fillpavimentoPrimo = SIMPLEX_GRID([[-dimTorre,lportico],[-0.3-6.5+fill+0.1,fill-0.1],[-2-0.2-0.3-5,0.1]]);
+	var fillpavimentoPrimo = SIMPLEX_GRID([[-dimTorre,lportico],[-0.3-6.5+fill-0.1,fill-0.1],[-2-0.2-0.3-5,0.1]]);
 	var fillsoffitto = 		 SIMPLEX_GRID([[-dimTorre,lportico],[-0.3-6.5+fill,fill],[-2-0.2-0.3-8.2,0.1]]);
 
 	var pavimenti = COLOR(colorePavimenti)(STRUCT([pavimentoBase,pavimentoPrimo,soffitto,fillpavimentoPrimo,fillpavimentoBase,fillsoffitto]));
